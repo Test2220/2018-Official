@@ -1,4 +1,4 @@
-# 2018-Early Aplpha
+# 2018-Official 
 
 This is the code for the 2018 Robot, updated often with new features constantly. 
 
