@@ -30,6 +30,7 @@ public class Robot extends IterativeRobot {
 	
 
 	Command autonomousCommand;
+	
 	SendableChooser<Command> chooser = new SendableChooser<>();
 	Double[] defaultValue = new Double[0];
 	
@@ -124,6 +125,7 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
+		
 	}
 
 	/**
@@ -166,7 +168,7 @@ public class Robot extends IterativeRobot {
 			autonomousCommand = new LStartRSwitch();
 		}
 		
-		
+		System.out.println(fieldData);
 		
 	}
 	
