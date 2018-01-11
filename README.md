@@ -41,6 +41,7 @@ OR
 
 ```
 + Functional Tank Setup
++ Basic Auto GameData Read
 
 ```
 
@@ -48,8 +49,10 @@ OR
 ### TODO
 
 ```
-+ Tank Drive
++ DriveToDistance (no PID)
++ PID Loops
 + Auto Turn
++ Pathfinder
 + Camera Vision
 
 ```
