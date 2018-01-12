@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -26,7 +27,8 @@ public class Robot extends IterativeRobot {
 	
 	public static OI oi;
 	
-	NetworkTableEntry table;
+	@SuppressWarnings("deprecation")
+	NetworkTable table;
 	
 
 	Command autonomousCommand;
@@ -42,6 +44,7 @@ public class Robot extends IterativeRobot {
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
+	@SuppressWarnings("deprecation")
 	@Override
 	public void robotInit() {	
 		oi = new OI();	
@@ -58,11 +61,8 @@ public class Robot extends IterativeRobot {
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);	
 		
-		table = NetworkTableInstance.getDefault().getEntry("GRIP/myContoursReport");
+		table = NetworkTable.getTable("GRIP/myContourValues");
 		
-		Number[] GRIPresults = table.getNumberArray(defaultValue);
-		
-		System.out.println(GRIPresults);
 		
 	}
 	
@@ -79,12 +79,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-		
-		table = NetworkTableInstance.getDefault().getEntry("GRIP/myContoursReport");
 
-		Number[] GRIPresults = table.getNumberArray(defaultValue);
-		
-		System.out.println(GRIPresults);
 		
 	}
 
@@ -142,6 +137,12 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("navx Gyro Z",DriveTrain.navX.getRawGyroZ());
 		SmartDashboard.putNumber("navx Angle",DriveTrain.navX.getAngle());
 		SmartDashboard.putNumber("navx yaw",DriveTrain.navX.getYaw());
+		
+		SmartDashboard.putNumber("Left Pos",DriveTrain.getLeftPos());
+		SmartDashboard.putNumber("Left RPM",DriveTrain.getLeftRPM());
+		
+		SmartDashboard.putNumber("Right Pos",DriveTrain.getRightPos());
+		SmartDashboard.putNumber("Right RPM",DriveTrain.getRightRPM());
 		
 		//Number[] centerX = table.getNumberArray(defaultValue);
 		

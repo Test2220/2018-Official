@@ -2,6 +2,7 @@ package org.usfirst.frc.team2220.robot.subsystems;
 
 import org.usfirst.frc.team2220.robot.RobotMap;
 
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
@@ -19,7 +20,17 @@ public class DrivetrainSubsystem extends Subsystem{
 	DifferentialDrive ArtemisDrive;
 	
 	public AHRS navX;
-
+	
+	public static FeedbackDevice QuadEncoder;
+	
+	double leftPos;
+	double rightPos;
+	
+	double leftRPM;
+	double rightRPM;
+	
+	double ticksPerRev = 1440;
+	double cyclesPerRev = 360;
 	
 	@Override
 	protected void initDefaultCommand() {
@@ -36,13 +47,18 @@ public class DrivetrainSubsystem extends Subsystem{
 		lDriveMaster = new WPI_TalonSRX(RobotMap.leftMaster);
 		rDriveMaster = new WPI_TalonSRX(RobotMap.rightMaster);
 		
+		
 		//Slave
 		lDriveSlave = new WPI_TalonSRX(RobotMap.leftSlave);
 		rDriveSlave = new WPI_TalonSRX(RobotMap.rightSlave);
 		
+		
 		//Set follow
 		lDriveSlave.follow(lDriveMaster);	
 		rDriveSlave.follow(rDriveMaster);
+		
+		lDriveMaster.configSelectedFeedbackSensor(QuadEncoder.QuadEncoder, 0, 10);
+		rDriveMaster.configSelectedFeedbackSensor(QuadEncoder.QuadEncoder, 0, 10);
 		
 		
 		
@@ -79,6 +95,37 @@ public class DrivetrainSubsystem extends Subsystem{
 		
 	}
 	
+	public double getLeftPos() {
+		
+		leftPos = lDriveMaster.getSensorCollection().getQuadraturePosition();
+		return leftPos;
+		
+	}
+	
+	public double getRightPos() {
+		
+		rightPos = rDriveMaster.getSensorCollection().getQuadraturePosition();
+		return rightPos;
+		
+	}
+	
+	public double getLeftRPM() {
+		
+		leftRPM = (getLeftPos() / ticksPerRev) * 60;
+		return leftRPM;
+		
+	}
+	
+	public double getRightRPM() {	
+		
+		rightRPM = (getRightPos() / ticksPerRev) * 60;
+		return rightRPM;
+		
+	}
+	
+	
+
+	
 	
 	public double deadzone(double output, double threshold) {
 		if (output <= threshold && output >= - threshold) {
@@ -87,6 +134,7 @@ public class DrivetrainSubsystem extends Subsystem{
 		}
 		return output;
 	}
+	
 	
 	
 }
