@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team2220.robot;
 
+import org.usfirst.frc.team2220.robot.commands.DriveForDistance;
 import org.usfirst.frc.team2220.robot.commands.ExampleCommand;
 import org.usfirst.frc.team2220.robot.commands.LeftStart.LStartLSwitch;
 import org.usfirst.frc.team2220.robot.commands.LeftStart.LStartRSwitch;
@@ -8,8 +9,6 @@ import org.usfirst.frc.team2220.robot.subsystems.DrivetrainSubsystem;
 import org.usfirst.frc.team2220.robot.subsystems.ExampleSubsystem;
 
 import edu.wpi.cscore.UsbCamera;
-import edu.wpi.first.networktables.NetworkTableEntry;
-import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -49,7 +48,7 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {	
 		oi = new OI();	
 		
-		ArtemisDrive = new DifferentialDrive(DriveTrain.lDriveMaster, DriveTrain.rDriveMaster);
+		autonomousCommand = new DriveForDistance(2000);
 		
 		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
 		camera.setResolution(240, 128);
@@ -145,6 +144,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Right RPM",DriveTrain.getRightRPM());
 		
 		//Number[] centerX = table.getNumberArray(defaultValue);
+		
 		
 	}
 

@@ -34,7 +34,7 @@ public class RobotMap {
 	
 	// Left Master and Right Master vals corrent for IkeaEncBot --- Slaves must be updated --- Have to correct orientation of drive
 	public static final int leftMaster = 15,
-			leftSlave = 3,
+			leftSlave = 3,	
 			rightMaster = 2,
 			rightSlave = 4;
 	
