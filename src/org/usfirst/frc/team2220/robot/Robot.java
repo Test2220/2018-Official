@@ -1,7 +1,7 @@
 
 package org.usfirst.frc.team2220.robot;
 
-import org.usfirst.frc.team2220.robot.commands.DriveForDistance;
+import org.usfirst.frc.team2220.robot.commands.DriveStraightForDistance;
 import org.usfirst.frc.team2220.robot.commands.ExampleCommand;
 import org.usfirst.frc.team2220.robot.commands.LeftStart.LStartLSwitch;
 import org.usfirst.frc.team2220.robot.commands.LeftStart.LStartRSwitch;
@@ -48,7 +48,7 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {	
 		oi = new OI();	
 		
-		autonomousCommand = new DriveForDistance(2000);
+		autonomousCommand = new DriveStraightForDistance(2000);
 		
 		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
 		camera.setResolution(240, 128);

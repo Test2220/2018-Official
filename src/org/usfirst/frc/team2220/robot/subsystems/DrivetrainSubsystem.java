@@ -67,6 +67,8 @@ public class DrivetrainSubsystem extends Subsystem{
 		lDriveMaster.setInverted(true);
 		rDriveMaster.setInverted(true);
 		
+		
+		//Set Encoder Stuff
 		lDriveMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
 		rDriveMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
 		
@@ -89,6 +91,7 @@ public class DrivetrainSubsystem extends Subsystem{
 		
 		rDriveMaster.configMotionAcceleration(accel, 10);
 		rDriveMaster.configMotionCruiseVelocity(cruiseVel, 10);
+		
 		
 	}
 	

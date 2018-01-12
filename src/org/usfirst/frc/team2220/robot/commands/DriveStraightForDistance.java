@@ -5,13 +5,13 @@ import org.usfirst.frc.team2220.robot.subsystems.DrivetrainSubsystem;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class DriveForDistance extends Command{
+public class DriveStraightForDistance extends Command{
 
 	double finalDistance;
 	double currentDistance;
 	double inputDistance;
 	
-	public DriveForDistance(int Distance) {
+	public DriveStraightForDistance(int Distance) {
 	
 		inputDistance = Math.abs(Distance);
 		
@@ -23,6 +23,8 @@ public class DriveForDistance extends Command{
 		protected void initialize() {
 			
 			Robot.DriveTrain.resetEncoderPos();
+			
+			Robot.DriveTrain.incrementAllPos(inputDistance);
 			
 		}
 

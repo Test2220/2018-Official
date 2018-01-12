@@ -1,6 +1,6 @@
 package org.usfirst.frc.team2220.robot;
 
-import org.usfirst.frc.team2220.robot.commands.DriveForDistance;
+import org.usfirst.frc.team2220.robot.commands.DriveStraightForDistance;
 import org.usfirst.frc.team2220.robot.commands.DriveWithXBox;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -36,7 +36,7 @@ public class OI {
 	public OI(){ 
 		
 		tankDrive.whenPressed(new DriveWithXBox());
-		driveToDistanceButton.whenPressed(new DriveForDistance(10));
+		driveToDistanceButton.whenPressed(new DriveStraightForDistance(100));
 		
 	}
 
