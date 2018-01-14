@@ -32,6 +32,7 @@ public class Robot extends IterativeRobot {
 
 	Command autonomousCommand;
 	
+	
 	SendableChooser<Command> chooser = new SendableChooser<>();
 	Double[] defaultValue = new Double[0];
 	
@@ -48,12 +49,15 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {	
 		oi = new OI();	
 		
-		autonomousCommand = new DriveStraightForDistance(2000);
+		//autonomousCommand = new DriveStraightForDistance(150);
 		
-		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+		/*UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
 		camera.setResolution(240, 128);
 		camera.setFPS(30);
 		camera.setExposureManual(50);
+		
+		
+		*/
 		
 		
 		chooser.addDefault("Default Auto", new ExampleCommand());
@@ -110,6 +114,8 @@ public class Robot extends IterativeRobot {
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
 	}
+	
+	
 
 	@Override
 	public void teleopInit() {
@@ -119,7 +125,7 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
-		
+					
 	}
 
 	/**

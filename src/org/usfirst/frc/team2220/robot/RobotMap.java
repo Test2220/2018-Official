@@ -20,22 +20,24 @@ public class RobotMap {
 	// public static int rangefinderModule = 1;
 	
 	//All Correct Vals for Artemis bot
+	
 	/*public static final int leftMaster = 1,
 			leftSlave = 2,
 			rightMaster = 3,
 			rightSlave = 4;
 			
 			*/
-			
-	public static final  Solenoid rightSol1 = new Solenoid(6);
-	public static final Solenoid rightSol2 = new Solenoid(7);
-	public static final Solenoid leftSol1 = new Solenoid(4);
-	public static final Solenoid leftSol2 = new Solenoid(5);
+
 	
 	// Left Master and Right Master vals corrent for IkeaEncBot --- Slaves must be updated --- Have to correct orientation of drive
-	public static final int leftMaster = 15,
-			leftSlave = 3,	
+	/*public static final int leftMaster = 15,
+			leftSlave = 6,	
 			rightMaster = 2,
-			rightSlave = 4;
+			rightSlave = 8;
 	
+	*/
+	public static final int leftMaster = 2,
+			leftSlave = 4,	
+			rightMaster = 1,
+			rightSlave = 3;
 }

@@ -25,14 +25,10 @@ public class DriveWithXBox extends Command{
 		@Override
 		protected void execute() {
 			
-			RobotMap.rightSol1.set(true); //True means tank drive
-			RobotMap.rightSol2.set(false);
+			//Negated for appropriation
 			
-			RobotMap.leftSol1.set(true); //True means tank drive
-			RobotMap.leftSol2.set(false);
-			
-			double leftSet = Robot.oi.getDriverStick().getRawAxis(1);
-			double rightSet = Robot.oi.getDriverStick().getRawAxis(5);
+			double leftSet = -Robot.oi.getDriverStick().getRawAxis(1);
+			double rightSet = -Robot.oi.getDriverStick().getRawAxis(5);
 			
 			Robot.DriveTrain.DriveSet(leftSet, -rightSet, true);
 			
